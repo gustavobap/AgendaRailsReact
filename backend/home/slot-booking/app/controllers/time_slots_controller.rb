@@ -9,7 +9,8 @@ class TimeSlotsController < ApplicationController
 
   # GET /time_slots/1
   def show
-    render json: @time_slot
+    TimeSlot.create!(start_date: DateTime.now, end_date: DateTime.now)
+    render json: {}
   end
 
   # POST /time_slots
