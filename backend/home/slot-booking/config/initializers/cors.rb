@@ -5,12 +5,22 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
-# Rails.application.config.middleware.insert_before 0, Rack::Cors do
-#   allow do
-#     origins "example.com"
-#
-#     resource "*",
-#       headers: :any,
-#       methods: [:get, :post, :put, :patch, :delete, :options, :head]
-#   end
-# end
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+    
+    client_ip = ENV['CLIENT_IP'] 
+    client_port = "#{ENV['CLIENT_PORT']}"
+
+    if(client_ip.strip() == "*")
+        origin = "*"
+    else
+        origin = "http://#{client_ip}"
+        origin += ":#{client_port}" if(client_port != "80")
+    end
+    
+    allow do
+        origins origin
+        resource '*',
+            headers: :any,
+            methods: [:get, :post, :put, :patch, :delete, :options, :head]
+    end
+end
