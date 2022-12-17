@@ -5,7 +5,7 @@ export interface TimeSlotsService {
 }
 
 const client = axios.create({
-  baseURL: `${process.env.REACT_APP_API_ORIGIN}`,
+  baseURL: `http://${process.env.REACT_APP_SERVER_IP}:${process.env.REACT_APP_API_PORT}`,
   headers: {
     "Access-Control-Allow-Origin": "*",
   },

@@ -48,7 +48,6 @@ FROM base as production
 
 ARG UNAME
 ARG PROJECT
-ARG REACT_APP_API_ORIGIN
 
 ARG WORKD="/home/${UNAME}/${PROJECT}/${PROJECT}"
 
@@ -58,8 +57,6 @@ USER ${UNAME}
 WORKDIR "${WORKD}"
 
 COPY --chown=${UNAME}:wheel ./${PROJECT}/${PROJECT}/ ../${PROJECT}
-
-ENV REACT_APP_API_ORIGIN ${REACT_APP_API_ORIGIN}
 
 RUN yarn
 RUN yarn build

@@ -4,7 +4,6 @@ class TimeSlotsController < ApplicationController
   # GET /time_slots
   def index
     @time_slots = TimeSlot.all
-
     render json: @time_slots
   end
 

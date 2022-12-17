@@ -13,5 +13,3 @@ services:
     container_name: ${PROJECT}_frontend_prod
     build:
       target: production
-      args:
-        REACT_APP_API_ORIGIN: "http://${SERVER_IP}:${API_PORT}"
