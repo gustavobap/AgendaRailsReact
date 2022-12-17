@@ -23,9 +23,6 @@ RUN adduser -S \
 
 RUN echo "${UNAME}:${UPASSWORD}" | chpasswd;
 
-RUN mkdir -p "${UHOME}/${PROJECT}/${PROJECT}"
-RUN chown ${UNAME}:wheel "/home/${UNAME}/${PROJECT}/${PROJECT}"
-
 FROM base as development
 
 ARG PROJECT

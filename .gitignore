@@ -2,4 +2,9 @@ backend/.gem
 backend/home/.bundle/
 backend/home/.local/
 backend/home/.bash_history
-frontend/home/node_modules
+backend/home/.irb_history
+frontend/home/.bash_history
+frontend/home/.cache/
+frontend/home/.config/
+frontend/home/.yarn/
+frontend/home/.yarnrc
