@@ -10,9 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_17_085857) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_19_034742) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "booking_day_locks", force: :cascade do |t|
+    t.datetime "day", precision: nil, null: false
+  end
 
   create_table "time_slots", force: :cascade do |t|
     t.tsrange "duration", null: false

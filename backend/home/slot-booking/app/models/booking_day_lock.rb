@@ -1,0 +1,2 @@
+class BookingDayLock < ApplicationRecord
+end

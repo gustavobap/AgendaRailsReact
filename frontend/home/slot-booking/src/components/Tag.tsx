@@ -3,19 +3,15 @@ import React from 'react';
 
 
 export interface PanelProps extends React.ComponentPropsWithoutRef<"div"> {
-  flavor: 'neutral' | 'light' | 'dark' | 'main'
+  flavor: 'available' | 'booked'
 }
 
-class Panel extends React.Component<PanelProps> {
-
-  static defaultProps = {
-    flavor: 'neutral',
-  };
+class Tag extends React.Component<PanelProps> {
 
   render() {
     const { className, ...props } = this.props;
     
-    const classes = ['panel']
+    const classes = ['tag']
     !isEmpty(className) && classes.push(className!);
     classes.push(this.props.flavor);
 
@@ -25,4 +21,4 @@ class Panel extends React.Component<PanelProps> {
   }
 }
 
-export default Panel;
+export default Tag;

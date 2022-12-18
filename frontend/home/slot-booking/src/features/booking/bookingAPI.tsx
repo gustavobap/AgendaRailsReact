@@ -1,7 +1,10 @@
 import axios, { AxiosResponse } from "axios";
+import { formatDateUTC } from "../../components/helper";
+import { TimeSlot } from "./bookingSlice";
 
 export interface BookingAPI {
-  list: (date: Date) => Promise<AxiosResponse<any, any>>
+  list: (date: Date, duration: number) => Promise<AxiosResponse<Array<TimeSlot>, any>>
+  create: (slot: TimeSlot) => Promise<AxiosResponse<TimeSlot, any>>
 }
 
 const client = axios.create({
@@ -12,5 +15,11 @@ const client = axios.create({
 });
 
 export const bookingAPI: BookingAPI = {
-  list: (date: Date) => client.get('time_slots', { params: { date } })
+  list: (date: Date, duration: number) => client.get('time_slots', { params: { date: formatDateUTC(date), duration } }),
+  create: (slot: TimeSlot) => client.post('time_slots', {
+    time_slot: {
+      start_date: slot.startDate,
+      end_date: slot.endDate,
+    }
+  })
 }

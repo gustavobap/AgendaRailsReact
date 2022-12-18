@@ -12,8 +12,90 @@
     &.light {
         background-color: $background-light;
     }
+
+    &.main {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        padding: 50px;
+        margin-top: 100px;
+        width: 890px
+    }
 }
 
+.tag-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+
+    .tag {
+
+        text-align: center;
+        gap: 10px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: $white;
+        border: 2px solid;
+        min-width: 50px;
+    
+        &.booked {
+            background-color: $red;
+            border-color: $red;
+
+            &:hover {
+                background-color: $red-light;
+            }
+        }
+    
+        &.available {
+            background-color: $white;
+            color: $green;
+            border-color: $green;
+            cursor: pointer;
+            
+            &:hover {
+                background-color: $green-light;
+            }
+        }
+    }
+}
+
+.field-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    margin-bottom: 15px;
+
+    .label {
+        line-height: 2em;
+    }
+
+    .field-detail {
+        font-size: 11px;
+        color: $red;
+        position: absolute;
+        bottom: -16px;
+        left: 2px;
+        letter-spacing: 0.06em;
+    }
+
+    input {
+        background-color: $background-neutral;
+        border: none;
+        border-radius: 4px;
+        padding: 10px;
+        color: $white;
+        line-height: 2em;
+        padding-bottom: 0.5em;
+        font-size: 14px;
+    }
+
+    &.disabled input {
+        color: $gray
+    }
+}
 
 .btn {
     display: flex;
@@ -88,100 +170,6 @@
 
         &:hover {
             border: thin $purple solid;
-        }
-    }
-}
-
-.field-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    position: relative;
-
-    .label {
-        line-height: 2em;
-    }
-
-    .field-detail {
-        font-size: 11px;
-        color: $red;
-        position: absolute;
-        bottom: -16px;
-        left: 2px;
-        letter-spacing: 0.06em;
-    }
-
-    input {
-        background-color: $background-neutral;
-        border: none;
-        border-radius: 4px;
-        padding: 10px;
-        color: $white;
-        line-height: 2em;
-        padding-bottom: 0.5em;
-        font-size: 14px;
-    }
-
-    &.disabled input {
-        color: $gray
-    }
-}
-
-.status-tag {
-
-    min-width: 100px;
-    padding: 10px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &::before {
-        content: '';
-        height: 10px;
-        width: 10px;
-        border-radius: 50%;
-        display: inline-block;
-        margin-right: 7px;
-    }
-
-    &.draft {
-        color: $white;
-        background-color: $gray;
-
-        &::before {
-            background-color: $white;
-        }
-
-        &::after {
-            content: 'Draft';
-        }
-    }
-
-    &.pending {
-
-        color: $orange;
-        background-color: $orange-transparent;
-
-        &::before {
-            background-color: $orange;
-        }
-
-        &::after {
-            content: 'Pending';
-        }
-    }
-
-    &.paid {
-        color: $green;
-        background-color: $green-transparent;
-
-        &::before {
-            background-color: $green;
-        }
-
-        &::after {
-            content: 'Paid';
         }
     }
 }

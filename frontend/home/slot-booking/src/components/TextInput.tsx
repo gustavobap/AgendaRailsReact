@@ -6,11 +6,11 @@ import { dateValidator, defaultValidator, numberValidator, Validator } from './v
 
 type DataType = string | number | Date
 
-interface Props<T extends DataType> extends React.ComponentPropsWithoutRef<"div"> {
+interface Props<T extends DataType> extends Omit<React.ComponentPropsWithoutRef<"div">, 'onChange'> {
     label?: string
     value: T
     disabled: boolean
-    onValueUpdated?: (value: T) => void
+    onChange?: (value: T) => void
 }
 
 interface State {
@@ -50,11 +50,11 @@ class TextInput<T extends DataType> extends React.Component<Props<T>, State> {
     handleChange(event: any) {
         const { valid, value, parsed } = this.state.validator.validate(event.target.value)
         this.setState({valid, value})
-        this.props.onValueUpdated && valid && this.props.onValueUpdated(parsed as T)
+        this.props.onChange && valid && this.props.onChange(parsed as T)
     }
 
     render() {
-        const {label, value, disabled, className, ...props} = this.props;
+        const {label, value, disabled, className, onChange, ...props} = this.props;
         
         const classes = ['field-container']
         !isEmpty(className) && classes.push(className!);

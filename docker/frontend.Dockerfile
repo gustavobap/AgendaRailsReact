@@ -48,15 +48,18 @@ FROM base as production
 
 ARG UNAME
 ARG PROJECT
-
-ARG WORKD="/home/${UNAME}/${PROJECT}/${PROJECT}"
+ARG WORKD="/home/${UNAME}/${PROJECT}"
 
 RUN yarn global add serve
+
+COPY --chown=${UNAME}:wheel "./home/${PROJECT}" ${WORKD}
+RUN chown -R ${UNAME} "/home/${UNAME}"
 
 USER ${UNAME}
 WORKDIR "${WORKD}"
 
-COPY --chown=${UNAME}:wheel ./${PROJECT}/${PROJECT}/ ../${PROJECT}
+RUN pwd
+RUN ls -lah
 
 RUN yarn
 RUN yarn build

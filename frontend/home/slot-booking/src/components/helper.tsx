@@ -1,33 +1,67 @@
-import _ from "lodash";
 import moment from "moment";
 
-export const formatDate = (date: Date) => {
-    return moment(date).format("DD MMM YYYY")
+export const formatDate = (date: Date | moment.Moment | string) => {
+  return moment(date).format("DD MMM YYYY (Z), dddd");
 }
 
-export const formatDateInput = (date: Date) => {
-    return moment(date).format('DD.MM.YYYY');
+export const formatTime = (date: Date | moment.Moment | string) => {
+  return moment(date).format("HH:mm")
+}
+
+export const formatDateInput = (date: Date | moment.Moment) => {
+  return moment(date).format('DD.MM.YYYY');
+}
+
+export const formatDateUTC = (date: Date | moment.Moment) => {
+  return moment(date).format();
 }
 
 export const parseDate = (date: string) => {
-    return moment(date, 'DD.MM.YYYY', true)
+  return moment(date, 'DD.MM.YYYY', true)
 }
 
-const formatter = new Intl.NumberFormat('de', {
-    style: 'currency',
-    currency: 'EUR',
-});
-
-export const formatCurrency = (value: number) => formatter.format(value)
-
-export const today = () => {
-    var d = new Date();
-    d.setHours(0, 0, 0, 0);
-    return d;
+export const parseDateUTC = (date: string) => {
+  return moment.utc(date)
 }
 
-export const daysAfter = (date: Date, days: number) => {
-    var newDate = new Date(date.valueOf());
-    newDate.setDate(newDate.getDate() + days);
-    return newDate;
+export const timeRangeInWords = (duration: number) => {
+  const range = moment.duration(duration, 'minutes');
+  const message = [];
+  if(range.days() > 0){
+    message.push(`${range.days()} ${range.days() > 1 ? 'days' : 'day'}`)
+  }
+  if(range.hours() > 0){
+    message.push(`${range.hours()} ${range.hours() > 1 ? 'hours' : 'hour'}`)
+  }
+  if(range.minutes() > 0){
+    message.push(`${range.minutes()} ${range.minutes() > 1 ? 'minutes' : 'minute'}`);
+  }  
+  return message.join(' ');
+}
+
+export const forEachDay = (startDate: moment.Moment, endDate: moment.Moment, callback: (day: moment.Moment) => void) => {
+  let firstDay = moment.utc(startDate).startOf('day');
+  const lastDay = moment.utc(endDate).startOf('day').add(1, 'day');
+  const numberOfDays = lastDay.diff(firstDay, 'days')+1;
+  for(let i = 0; i < numberOfDays; i++){
+    callback(firstDay)
+    firstDay.add(1, 'day')
+  }
+}
+
+export const rangeOverlaps = (start1: moment.Moment, end1: moment.Moment, start2: moment.Moment, end2: moment.Moment) => {
+
+  if(start1.isBetween(start2, end2, "second", "[)"))
+    return true
+  
+  if(end1.isBetween(start2, end2, "second", "(]"))
+    return true
+
+  if(start2.isBetween(start1, end1, "second", "[)"))
+    return true
+
+  if(end2.isBetween(start1, end1, "second", "(]"))
+    return true
+
+  return false
 }

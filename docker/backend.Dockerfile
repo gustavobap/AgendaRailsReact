@@ -49,11 +49,13 @@ FROM base as production
 
 ARG PROJECT
 ARG UNAME
+ARG WORKD="/home/${UNAME}/${PROJECT}"
+
+COPY --chown=${UNAME}:wheel "./home/${PROJECT}" ${WORKD}
+RUN chown -R ${UNAME} "/home/${UNAME}"
 
 USER ${UNAME}
-WORKDIR "/home/${UNAME}/${PROJECT}/${PROJECT}"
-
-COPY --chown=${UNAME}:wheel "./${PROJECT}" ../
+WORKDIR ${WORKD}
 
 RUN gem install bundler
 RUN bundle install

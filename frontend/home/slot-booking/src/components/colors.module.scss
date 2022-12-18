@@ -13,10 +13,8 @@ $background-dark: #141625;
 $background-neutral: #1E2139;
 $background-light: #252945;
 
-$orange: rgb(255, 142, 1);
-$orange-transparent: rgba(255, 142, 1, 0.1);
-$green: rgb(51, 214, 159);
-$green-transparent: rgba(51, 214, 159, 0.1);
+$green: rgb(27, 129, 90);
+$green-light: rgb(61, 230, 165);
 
 :export {
     purple: $purple;
@@ -33,10 +31,7 @@ $green-transparent: rgba(51, 214, 159, 0.1);
     background-dark: $background-dark;
     background-neutral: $background-neutral;
     background-light: $background-light;
-    
-    orange: $orange;
-    green: $green;
 
-    orange-transparent: $orange-transparent;
-    green-transparent: $green-transparent;
+    green: $green;
+    green: $green-light;
 }

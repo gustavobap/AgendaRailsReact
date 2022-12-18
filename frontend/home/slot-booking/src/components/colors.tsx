@@ -5,7 +5,7 @@ export type ColorName = (
     'red' | 'red-light' |
     'black' | 'gray' | 'gray-light' | 'white' |
     'background-dark' | 'background-neutral' | 'background-light' |
-    'orange' | 'green' | 'orange-transparent' | 'green-transparent'
+    'green' | 'green-light'
 )
 
 export default colors;

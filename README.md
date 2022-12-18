@@ -1,10 +1,16 @@
 # Invoices
 
-This is an application for managing invoices. It comprises of two separate apps, a backend built with **Ruby on Rails** and a frontend built with **React**.
+This is a Booking demo application that is concurrency safe. It comprises of two separate apps, a backend built with **Ruby on Rails** and a frontend built with **React**. 
+
+## Features
+
+* Guarantees no Booking overlaps
+* Works with different timezones
+* Uses websocket to publish bookings to other clients
 
 ## Demo
 
-There is a demonstration deployed at http://54.232.96.60/
+There is a demonstration deployed at 
 
 ## Installation
 
@@ -35,15 +41,5 @@ You can remove docker images and containers running following script
 ./scripts/prod/uninstall.sh
 ```
 
-## To do
-
-* Mark as Paid
-* Fields presence validators in InvoiceForm
-* Delete modal
-* Filter by status
-* Date picker
-* Drop down
-* Write tests
-
 ## License
-GNU General Public License v3.0
+GNU General Public License v3

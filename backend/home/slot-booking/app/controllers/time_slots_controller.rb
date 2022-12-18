@@ -1,61 +1,37 @@
 class TimeSlotsController < ApplicationController
-  before_action :set_time_slot, only: %i[ show update destroy ]
 
   # GET /time_slots
   def index
-    day = DateTime.parse(params[:date]).utc
-    booked_slots = TimeSlot.where("duration && ?", [day.beginning_of_day..day.end_of_day])
-    
-    booked_slots = booked_slots.order(:duration).map do |slot|
-      {
-        id: slot.id,
-        start_date: slot.duration.min,
-        end_date: slot.duration.max
-      }
+    day = Time.parse(params[:date])
+    duration = params[:duration].to_i
+    if(duration <= 0)
+      duration = 15
+    elsif duration.minutes > TimeSlot::MAX_BOOKING_DAYS.days
+      Rails.logger.debug("Capping duration #{duration}")
+      duration = TimeSlot::MAX_BOOKING_DAYS * 24 * 60
     end
-
-    render json: booked_slots
-  end
-
-  # GET /time_slots/1
-  def show
-    TimeSlot.create!(start_date: DateTime.now, end_date: DateTime.now)
-    render json: {}
+    start_date = day.beginning_of_day
+    end_date = start_date + 1.day + duration.minutes
+    booked_slots = TimeSlot.where("duration && ?", [start_date..end_date])
+    render json: booked_slots.order(:duration).map(&:to_booking_json)
   end
 
   # POST /time_slots
   def create
-    @time_slot = TimeSlot.new(time_slot_params)
-
-    if @time_slot.save
-      render json: @time_slot, status: :created, location: @time_slot
+    
+    time_slot = TimeSlotHelper.from_booking_json(time_slot_params)
+    
+    if time_slot.save
+      render json: time_slot.to_booking_json, status: :created, location: time_slot
     else
-      render json: @time_slot.errors, status: :unprocessable_entity
+      render json: time_slot.errors, status: :unprocessable_entity
     end
-  end
-
-  # PATCH/PUT /time_slots/1
-  def update
-    if @time_slot.update(time_slot_params)
-      render json: @time_slot
-    else
-      render json: @time_slot.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /time_slots/1
-  def destroy
-    @time_slot.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_time_slot
-      @time_slot = TimeSlot.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def time_slot_params
-      params.require(:time_slot).permit(:start_date, :end_date)
-    end
+  def time_slot_params
+    params.require(:time_slot).permit(:start_date, :end_date)
+  end
+
 end

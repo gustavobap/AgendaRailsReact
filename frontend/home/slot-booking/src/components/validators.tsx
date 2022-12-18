@@ -15,7 +15,7 @@ export const numberValidator: Validator<number> = {
     validate: (value: string) => {
         const parsed = toNumber(value);
         return {
-            valid: !isNaN(parsed),
+            valid: !isNaN(parsed) && parsed > 0&& parsed < 10079,
             parsed: parsed,
             value
         }
