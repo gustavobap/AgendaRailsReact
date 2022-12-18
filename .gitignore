@@ -3,6 +3,7 @@ backend/home/.bundle/
 backend/home/.local/
 backend/home/.bash_history
 backend/home/.irb_history
+backend/home/.rdbg_history
 frontend/home/.bash_history
 frontend/home/.cache/
 frontend/home/.config/
