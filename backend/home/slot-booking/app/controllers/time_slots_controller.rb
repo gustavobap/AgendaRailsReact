@@ -5,7 +5,16 @@ class TimeSlotsController < ApplicationController
   def index
     day = DateTime.parse(params[:date]).utc
     booked_slots = TimeSlot.where("duration && ?", [day.beginning_of_day..day.end_of_day])
-    render json: booked_slots.order(:duration)
+    
+    booked_slots = booked_slots.order(:duration).map do |slot|
+      {
+        id: slot.id,
+        start_date: slot.duration.min,
+        end_date: slot.duration.max
+      }
+    end
+
+    render json: booked_slots
   end
 
   # GET /time_slots/1
