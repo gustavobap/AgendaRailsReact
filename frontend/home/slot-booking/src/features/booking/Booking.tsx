@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
-import { useAppSelector, useAppDispatch } from '../app/hooks';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
   fetchTimeSlots,
   selectBookedSlots,
   selectAvailableSlots
-} from './timeSlotsSlice';
+} from './bookingSlice';
 
 
 export function Booking() {

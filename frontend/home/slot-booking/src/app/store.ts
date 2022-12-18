@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import timeSlotsReducer from '../booking/timeSlotsSlice';
+import timeSlotsReducer from '../features/booking/bookingSlice';
 
 export const store = configureStore({
   reducer: {

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState, AppThunk } from '../app/store';
+import { RootState, AppThunk } from '../../app/store';
 import { bookingAPI } from './bookingAPI';
 
 export interface TimeSlot{
@@ -34,7 +34,7 @@ export const fetchTimeSlots = createAsyncThunk(
   }
 );
 
-export const timeSlotsSlice = createSlice({
+export const bookingSlice = createSlice({
   name: 'counter',
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
@@ -64,7 +64,7 @@ export const timeSlotsSlice = createSlice({
   },
 });
 
-export const { addBookedSlots, addAvailableSlots } = timeSlotsSlice.actions;
+export const { addBookedSlots, addAvailableSlots } = bookingSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
@@ -73,4 +73,4 @@ export const selectBookedSlots = (state: RootState) => state.timeSlots.bookedSlo
 export const selectAvailableSlots = (state: RootState) => state.timeSlots.availableSlots
 
 
-export default timeSlotsSlice.reducer;
+export default bookingSlice.reducer;
