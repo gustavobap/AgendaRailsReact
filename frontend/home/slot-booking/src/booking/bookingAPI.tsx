@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-export interface TimeSlotsService {
+export interface BookingAPI {
   list: (date: Date) => Promise<AxiosResponse<any, any>>
 }
 
@@ -11,6 +11,6 @@ const client = axios.create({
   },
 });
 
-export const timeSlotsService: TimeSlotsService = {
+export const bookingAPI: BookingAPI = {
   list: (date: Date) => client.get('time_slots', { params: { date } })
 }
