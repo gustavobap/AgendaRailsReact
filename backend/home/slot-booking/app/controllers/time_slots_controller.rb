@@ -3,8 +3,9 @@ class TimeSlotsController < ApplicationController
 
   # GET /time_slots
   def index
-    @time_slots = TimeSlot.all
-    render json: @time_slots
+    day = DateTime.parse(params[:date]).utc
+    booked_slots = TimeSlot.where("duration && ?", [day.beginning_of_day..day.end_of_day])
+    render json: booked_slots
   end
 
   # GET /time_slots/1

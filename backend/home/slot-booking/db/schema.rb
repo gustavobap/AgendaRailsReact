@@ -15,10 +15,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_17_085857) do
   enable_extension "plpgsql"
 
   create_table "time_slots", force: :cascade do |t|
-    t.string "start_date"
-    t.string "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.tsrange "duration", null: false
+    t.index ["duration"], name: "index_time_slots_on_duration"
   end
 
 end

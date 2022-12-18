@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
 export interface TimeSlotsService {
-  list: () => Promise<AxiosResponse<any, any>>
+  list: (date: Date) => Promise<AxiosResponse<any, any>>
 }
 
 const client = axios.create({
@@ -12,5 +12,5 @@ const client = axios.create({
 });
 
 export const timeSlotsService: TimeSlotsService = {
-  list: () => client.get('time_slots')
+  list: (date: Date) => client.get('time_slots', { params: { date } })
 }

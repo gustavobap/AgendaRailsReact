@@ -19,7 +19,7 @@ class App extends React.Component<Props, State> {
 
   componentDidMount(){
     console.log('mmmmm')
-    timeSlotsService.list().then((slots) => {
+    timeSlotsService.list(new Date()).then((slots) => {
       console.log(slots)
     })
     timeSlotsListener.subscribe(new Date())

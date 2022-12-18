@@ -1,11 +1,11 @@
 class TimeSlot < ApplicationRecord
 
-    before_create :broadcast_booking
-
+    after_commit :broadcast_booking
+    
     private
 
     def broadcast_booking
-        ActionCable.server.broadcast("#{Date.today.strftime}_DailySlotsBooking", { time_slots: {oi: 'ola'} })
+        ActionCable.server.broadcast("#{Date.today.strftime}_DailySlotsBooking", self.to_json)
     end
 
 end

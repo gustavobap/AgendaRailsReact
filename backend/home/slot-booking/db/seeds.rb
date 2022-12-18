@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-JSON.parse(File.read("db/seeds.json")).each do |slot|
+JSON.parse(File.read("db/seeds.json")).each do |seed|
+    start_date = DateTime.parse(seed['start_date']).utc
+    end_date = DateTime.parse(seed['end_date']).utc
+    slot = { duration: (start_date..end_date) }
     TimeSlot.create!(slot)
 end
