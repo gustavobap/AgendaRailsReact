@@ -1,0 +1,42 @@
+$purple: #7C5DFA;
+$purple-light: #9277FF;
+$red: #EC5757;
+$red-light: rgb(255, 151, 151);
+
+$black: #0C0E16;
+$gray-dark: #696e8b;
+$gray: #888EB0;
+$gray-light: #DFE3FA;
+$white: #F8F8FB;
+
+$background-dark: #141625;
+$background-neutral: #1E2139;
+$background-light: #252945;
+
+$orange: rgb(255, 142, 1);
+$orange-transparent: rgba(255, 142, 1, 0.1);
+$green: rgb(51, 214, 159);
+$green-transparent: rgba(51, 214, 159, 0.1);
+
+:export {
+    purple: $purple;
+    purple-light: $purple-light;
+    red: $red;
+    red-light: $red-light;
+    
+    black: $black;
+    gray-dark: $gray-dark;
+    gray: $gray;
+    gray-light: $gray-light;
+    white: $white;
+    
+    background-dark: $background-dark;
+    background-neutral: $background-neutral;
+    background-light: $background-light;
+    
+    orange: $orange;
+    green: $green;
+
+    orange-transparent: $orange-transparent;
+    green-transparent: $green-transparent;
+}

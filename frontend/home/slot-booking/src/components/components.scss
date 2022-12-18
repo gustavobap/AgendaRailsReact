@@ -1,0 +1,187 @@
+@import './designSystem.scss';
+
+.panel {
+    background-color: $background-neutral;
+    padding: 25px;
+    border-radius: 4px;
+
+    &.dark {
+        background-color: $background-dark;
+    }
+
+    &.light {
+        background-color: $background-light;
+    }
+}
+
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: $white;
+    border: none;
+    cursor: pointer;
+    min-width: 20px;
+
+    &.icon {
+        padding: 0;
+        min-width: unset;
+        width: fit-content;
+        height: fit-content;
+    }
+
+    &.primary {
+        background-color: $purple;
+
+        &:hover {
+            background-color: $purple-light;
+        }
+    }
+
+    &.warning {
+        background-color: $red;
+
+        &:hover {
+            background-color: $red-light;
+        }
+    }
+
+    &.black {
+        background-color: $black;
+
+        &:hover {
+            background-color: $white;
+        }
+    }
+
+    &.night {
+        background-color: $background-light;
+
+        &:hover {
+            background-color: $gray-light;
+            color: $gray;
+        }
+    }
+
+    &.day {
+        background-color: $white;
+        color: $gray;
+
+        &:hover {
+            background-color: $gray-light;
+        }
+    }
+
+    &.gray {
+        background-color: $gray-dark;
+
+        &:hover {
+            background-color: $gray;
+        }
+    }
+
+    &.link {
+        padding: 3px;
+
+        &:hover {
+            border: thin $purple solid;
+        }
+    }
+}
+
+.field-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+
+    .label {
+        line-height: 2em;
+    }
+
+    .field-detail {
+        font-size: 11px;
+        color: $red;
+        position: absolute;
+        bottom: -16px;
+        left: 2px;
+        letter-spacing: 0.06em;
+    }
+
+    input {
+        background-color: $background-neutral;
+        border: none;
+        border-radius: 4px;
+        padding: 10px;
+        color: $white;
+        line-height: 2em;
+        padding-bottom: 0.5em;
+        font-size: 14px;
+    }
+
+    &.disabled input {
+        color: $gray
+    }
+}
+
+.status-tag {
+
+    min-width: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+        content: '';
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 7px;
+    }
+
+    &.draft {
+        color: $white;
+        background-color: $gray;
+
+        &::before {
+            background-color: $white;
+        }
+
+        &::after {
+            content: 'Draft';
+        }
+    }
+
+    &.pending {
+
+        color: $orange;
+        background-color: $orange-transparent;
+
+        &::before {
+            background-color: $orange;
+        }
+
+        &::after {
+            content: 'Pending';
+        }
+    }
+
+    &.paid {
+        color: $green;
+        background-color: $green-transparent;
+
+        &::before {
+            background-color: $green;
+        }
+
+        &::after {
+            content: 'Paid';
+        }
+    }
+}
