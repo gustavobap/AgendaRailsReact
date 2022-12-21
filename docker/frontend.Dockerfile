@@ -64,4 +64,6 @@ RUN ls -lah
 RUN yarn
 RUN yarn build
 
-ENTRYPOINT serve build -s -p 3000
+# ENTRYPOINT serve build -s -p 3000
+
+ENTRYPOINT yarn start -p 3000

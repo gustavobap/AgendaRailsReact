@@ -1,4 +1,4 @@
-import actionCable from 'actioncable'
+import { createConsumer } from '@rails/actioncable'
 import moment from 'moment'
 import { forEachDay } from '../../components/helper'
 import { TimeSlot } from './bookingSlice'
@@ -8,7 +8,7 @@ export interface BookingListener {
     unsubscribe: (subscriptions: Array<actionCable.Channel>) => void;
 }
 
-const consumer = actionCable.createConsumer(`ws://${process.env.REACT_APP_SERVER_IP}:${process.env.REACT_APP_API_PORT}/cable`)
+const consumer = createConsumer(`ws://${process.env.REACT_APP_SERVER_IP}:${process.env.REACT_APP_API_PORT}/cable`)
 
 export const bookingListener: BookingListener = {
     subscribe: (date: Date, duration: number, callback: (timeSlot: TimeSlot) => void) => {
