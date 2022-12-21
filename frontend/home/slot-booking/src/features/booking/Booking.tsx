@@ -17,6 +17,7 @@ import {
 } from './bookingSlice';
 
 import './Booking.scss'
+import { Subscription } from '@rails/actioncable';
 
 
 export function Booking() {
@@ -31,7 +32,7 @@ export function Booking() {
   const [day, setDay] = useState(inputDay)
   const [duration, setDuration] = useState(inputDuration)
 
-  const [subscriptions, setSubscriptions] = useState<Array<ActionCable.Channel>>([]);
+  const [subscriptions, setSubscriptions] = useState<Array<Subscription>>([]);
 
   useEffect(() => {
     showSchedule(inputDay, inputDuration)
