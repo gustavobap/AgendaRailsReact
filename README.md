@@ -10,7 +10,7 @@ This is a Booking demo application that is concurrency safe. It comprises of two
 
 ## Demo
 
-There is a demonstration deployed at 
+There is a demonstration deployed at http://18.159.124.172/
 
 ## Installation
 
