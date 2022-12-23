@@ -1,4 +1,4 @@
-FROM ruby:alpine3.17 AS BASE
+FROM alpine:3.17 AS BASE
 
 ARG PROJECT
 
@@ -20,7 +20,7 @@ RUN adduser -S \
     --ingroup "wheel" \
     --uid "${UID}" \
     "${UNAME}"
-
+RUN chown -R ${UNAME} "${UHOME}"
 RUN echo "${UNAME}:${UPASSWORD}" | chpasswd;
 
 FROM base as development
@@ -53,16 +53,12 @@ ARG WORKD="/home/${UNAME}/${PROJECT}"
 RUN yarn global add serve
 
 COPY --chown=${UNAME}:wheel "./home/${PROJECT}" ${WORKD}
-RUN chown -R ${UNAME} "/home/${UNAME}"
 
 USER ${UNAME}
 WORKDIR "${WORKD}"
 
-RUN pwd
-RUN ls -lah
-
 RUN yarn
 RUN yarn build
 
-ENTRYPOINT yarn start -p 3000
-# ENTRYPOINT serve build -s -p 3000
+# ENTRYPOINT yarn start -p 3000
+ENTRYPOINT serve build -s -p 3000
