@@ -13,3 +13,5 @@ services:
     container_name: ${PROJECT}_frontend_prod
     build:
       target: production
+    ports:
+      - ${CLIENT_PORT}:80

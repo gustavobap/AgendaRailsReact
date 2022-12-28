@@ -1,15 +1,17 @@
-FROM alpine:3.17 AS BASE
+FROM alpine:3.17 AS development
 
 ARG PROJECT
+
+ARG SERVER_IP
+ARG API_PORT
 
 ARG UNAME
 ARG UID
 ARG UPASSWORD
+ARG UHOME="/home/${UNAME}"
 
 ARG GIT_UNAME
 ARG GIT_UEMAIL
-
-ARG UHOME="/home/${UNAME}"
 
 RUN apk --no-cache add bash
 RUN apk --no-cache add --update nodejs yarn
@@ -23,14 +25,6 @@ RUN adduser -S \
 RUN chown -R ${UNAME} "${UHOME}"
 RUN echo "${UNAME}:${UPASSWORD}" | chpasswd;
 
-FROM base as development
-
-ARG PROJECT
-ARG UNAME
-ARG GIT_UNAME
-ARG GIT_UEMAIL
-ARG UHOME="/home/${UNAME}"
-
 RUN apk --no-cache add git vim sudo busybox-suid
 RUN echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel
 
@@ -42,23 +36,27 @@ WORKDIR "/${UHOME}/${PROJECT}"
 RUN git config --global user.name "${GIT_UNAME}"
 RUN git config --global user.email "${GIT_UEMAIL}"
 
+ENV REACT_APP_SERVER_IP=${SERVER_IP}
+ENV REACT_APP_API_PORT=${API_PORT}
+
 ENTRYPOINT ["/bin/bash"]
 
-FROM base as production
+FROM development as build
 
-ARG UNAME
 ARG PROJECT
-ARG WORKD="/home/${UNAME}/${PROJECT}"
+ARG WORKD="/tmp/${PROJECT}"
 
-RUN yarn global add serve
-
-COPY --chown=${UNAME}:wheel "./home/${PROJECT}" ${WORKD}
-
-USER ${UNAME}
-WORKDIR "${WORKD}"
+USER root
+COPY "./home/${PROJECT}" ${WORKD}
+WORKDIR ${WORKD}
 
 RUN yarn
 RUN yarn build
 
-# ENTRYPOINT yarn start -p 3000
-ENTRYPOINT serve build -s -p 3000
+FROM httpd:2.4-alpine AS production
+
+ARG PROJECT
+ARG WORKD="/usr/local/apache2/htdocs"
+
+RUN apk --no-cache add bash
+COPY --from=build "/tmp/${PROJECT}/build" ${WORKD}
