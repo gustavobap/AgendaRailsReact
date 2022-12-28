@@ -34,14 +34,19 @@ const initialState: BookingState = {
 // typically used to make async requests.
 export const setBookingData = createAsyncThunk(
   'booking/setBookingData',
-  async (args: { day: Date, duration: number }) => {
-    const response = await bookingAPI.list(args.day, args.duration);
-    const props : Partial<BookingState> = {
-      duration: args.duration,
-      bookingDay: formatDateInput(args.day),
-      bookedSlots: response.data
+  async (args: { day: Date, duration: number }, thunkAPI) => {
+    try{
+      const response = await bookingAPI.list(args.day, args.duration);
+      const props : Partial<BookingState> = {
+        duration: args.duration,
+        bookingDay: formatDateInput(args.day),
+        bookedSlots: response.data
+      }
+      return props
+    }catch(error: any){
+      const message = error?.response?.data || error
+      return thunkAPI.rejectWithValue(message)
     }
-    return props
   }
 );
 
@@ -84,8 +89,9 @@ export const bookingSlice = createSlice({
         state.schedule = calculateAvailableSlots(state)
         state.status = 'idle';
       })
-      .addCase(setBookingData.rejected, (state) => {
+      .addCase(setBookingData.rejected, (state, action) => {
         state.status = 'failed';
+        console.log(action)
       })
       .addCase(bookSlot.pending, (state) => {
         state.status = 'loading';
@@ -97,7 +103,7 @@ export const bookingSlice = createSlice({
       })
       .addCase(bookSlot.rejected, (state, action) => {
         state.status = 'failed';
-        alert(action.payload)
+        console.log(action)
       })
   },
 });
