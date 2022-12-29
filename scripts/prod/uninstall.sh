@@ -7,4 +7,4 @@ docker_files="$scripts/../../docker"
 export DOCKER_UID="$(id -u)"
 export DOCKER_UNAME="$(whoami)"
 export DOCKER_UPASSWORD="$(whoami)"
-docker-compose -f "$docker_files/docker-compose.yml" -f "$docker_files/docker-compose.prod.yml" down --rmi all
+docker-compose -f "$docker_files/docker-compose.yml" -f "$docker_files/docker-compose.prod.yml" down --remove-orphans --rmi all
