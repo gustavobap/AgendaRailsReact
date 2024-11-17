@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import Button from '../../components/Button';
-import { formatDate, formatTime, timeRangeInWords } from '../../components/helper';
+import { formatDate, formatTime, startOfDayUTC, timeRangeInWords } from '../../components/helper';
 import Panel from '../../components/Panel';
 import Tag from '../../components/Tag';
 import TextInput from '../../components/TextInput';
@@ -26,7 +26,7 @@ export function Booking() {
 
   const dispatch = useAppDispatch();
 
-  const [inputDay, setInputDay] = useState(moment().toDate())
+  const [inputDay, setInputDay] = useState(moment().startOf('day').toDate())
   const [inputDuration, setInputDuration] = useState(15)
 
   const [day, setDay] = useState(inputDay)

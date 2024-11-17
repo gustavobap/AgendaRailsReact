@@ -39,10 +39,13 @@ export const timeRangeInWords = (duration: number) => {
   return message.join(' ');
 }
 
+export const startOfDayUTC = (date: moment.Moment = moment()) => moment.utc(date).startOf('day');
+export const endOfDayUTC = (date: moment.Moment = moment()) => moment.utc(date).endOf('day');
+
 export const forEachDay = (startDate: moment.Moment, endDate: moment.Moment, callback: (day: moment.Moment) => void) => {
-  let firstDay = moment.utc(startDate).startOf('day');
-  const lastDay = moment.utc(endDate).startOf('day').add(1, 'day');
-  const numberOfDays = lastDay.diff(firstDay, 'days')+1;
+  let firstDay = startOfDayUTC(startDate);
+  const lastDay = endOfDayUTC(endDate);
+  const numberOfDays = lastDay.diff(firstDay, 'days') + 1;
   for(let i = 0; i < numberOfDays; i++){
     callback(firstDay)
     firstDay.add(1, 'day')

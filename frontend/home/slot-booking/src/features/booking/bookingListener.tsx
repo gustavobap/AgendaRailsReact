@@ -13,10 +13,12 @@ const consumer = createConsumer(`ws://${process.env.REACT_APP_SERVER_IP}:${proce
 export const bookingListener: BookingListener = {
     subscribe: (date: Date, duration: number, callback: (timeSlot: TimeSlot) => void) => {
         const channelName = 'ApplicationCable::DailySlotsBookingChannel'
-        const firstDay = moment.utc(date).startOf('day');
+        const startDate = moment(date).startOf('day');
+        const endDate = moment(date).endOf('day').subtract(15, 'minutes').add(duration, 'minutes')
         const subscriptions: Array<Subscription> = []
-        forEachDay(firstDay, firstDay.add(duration, 'minutes'), (day) => {
+        forEachDay(startDate, endDate, (day) => {
             const room = day.format("YYYY-MM-DD");
+            console.log(`listening to ${room}`)
             const channel = consumer.subscriptions.create({channel: channelName, room}, {
                 received(data){ 
                     callback(data);

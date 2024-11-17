@@ -57,7 +57,7 @@ export const bookSlot = createAsyncThunk(
       const response = await bookingAPI.create(slot);  
       return response.data
     }catch(error: any){
-      const message = error.response.data.duration.join(', ')
+      const message = error?.response?.data?.duration?.join(', ') || error
       return thunkAPI.rejectWithValue(message)
     }
   }
