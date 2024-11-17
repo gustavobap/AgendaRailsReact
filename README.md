@@ -8,10 +8,6 @@ This is a Booking demo application that is concurrency safe. It comprises of two
 * Works with different timezones
 * Uses websocket to publish bookings to other clients
 
-## Demo
-
-There is a demonstration deployed at http://18.159.124.172/
-
 ## Installation
 
 This project uses **docker** and **docker-compose** to build all infrastructure. You will need both installed.
