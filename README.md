@@ -1,4 +1,4 @@
-# Invoices
+# Timeslot Booking
 
 This is a Booking demo application that is concurrency safe. It comprises of two separate apps, a backend built with **Ruby on Rails** and a frontend built with **React**. 
 
