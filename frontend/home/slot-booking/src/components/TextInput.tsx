@@ -53,6 +53,16 @@ class TextInput<T extends DataType> extends React.Component<Props<T>, State> {
         this.props.onChange && valid && this.props.onChange(parsed as T)
     }
 
+    componentDidUpdate(prevProps: Props<T>, prevState: State) {
+        if(prevProps.value !== this.props.value){
+            this.setState({
+                valid: true,
+                value: this.state.validator.toString(this.props.value),
+                validator: this.state.validator
+            })
+        }
+    }
+
     render() {
         const {label, value, disabled, className, onChange, ...props} = this.props;
         
