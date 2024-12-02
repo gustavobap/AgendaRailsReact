@@ -1,8 +1,8 @@
 
-# Slot Booking Application
+# Agenda Application
 
 ## Introduction
-This slot booking application is designed to demonstrate how to structure and implement the architecture of an agenda system. It uses modern web technologies and a scalable design to handle real-time slot bookings efficiently.
+This application is designed to demonstrate how to structure and implement the architecture of an agenda system. It uses modern web technologies and a scalable design to handle real-time slot bookings efficiently.
 
 ## Architecture
 
@@ -50,7 +50,6 @@ You can remove docker images and containers running following script
 3. If another user books a slot while you're viewing, you'll see real-time updates on the schedule screen.
 
 ![Screenshot from 2024-11-30 08-14-41_small](https://github.com/user-attachments/assets/2e0e88ea-e9a6-480f-b147-d1b62f805ed7)
-
 
 ## Concurrency Management
 - Database locks and transactions are used to prevent overlapping bookings, even under parallel user execution.
