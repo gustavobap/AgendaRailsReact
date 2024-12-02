@@ -1,0 +1,64 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0" version="25.0.1">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="1364" dy="795" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="JNf_YrvE9puDNG5ZMBzY-5" value="&lt;div&gt;Booking Request&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JNf_YrvE9puDNG5ZMBzY-0" target="JNf_YrvE9puDNG5ZMBzY-4">
+          <mxGeometry x="-0.0588" y="15" relative="1" as="geometry">
+            <mxPoint x="330" y="110" as="sourcePoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JNf_YrvE9puDNG5ZMBzY-0" value="Front-end" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="210" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JNf_YrvE9puDNG5ZMBzY-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JNf_YrvE9puDNG5ZMBzY-1" target="JNf_YrvE9puDNG5ZMBzY-0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JNf_YrvE9puDNG5ZMBzY-6" value="&lt;div&gt;Select booking&lt;/div&gt;&lt;div&gt;window&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="JNf_YrvE9puDNG5ZMBzY-2">
+          <mxGeometry y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JNf_YrvE9puDNG5ZMBzY-1" value="" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="50" y="70" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JNf_YrvE9puDNG5ZMBzY-13" value="Broadcast Update" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JNf_YrvE9puDNG5ZMBzY-4" target="JNf_YrvE9puDNG5ZMBzY-14">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="270" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JNf_YrvE9puDNG5ZMBzY-25" value="&lt;div&gt;Booking&amp;nbsp;&lt;/div&gt;&lt;div&gt;Confirmation / Failure&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JNf_YrvE9puDNG5ZMBzY-4" target="JNf_YrvE9puDNG5ZMBzY-0">
+          <mxGeometry x="0.0588" y="25" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="470" y="115" />
+              <mxPoint x="470" y="115" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JNf_YrvE9puDNG5ZMBzY-4" value="&lt;div&gt;Back-end&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="500" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JNf_YrvE9puDNG5ZMBzY-7" value="Database" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.database;whiteSpace=wrap;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="730" y="70" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JNf_YrvE9puDNG5ZMBzY-8" value="Check Overlap" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JNf_YrvE9puDNG5ZMBzY-4" target="JNf_YrvE9puDNG5ZMBzY-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JNf_YrvE9puDNG5ZMBzY-24" value="&lt;div&gt;Real-time Updates&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JNf_YrvE9puDNG5ZMBzY-14" target="JNf_YrvE9puDNG5ZMBzY-0">
+          <mxGeometry x="-0.2258" y="20" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="270" y="210" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JNf_YrvE9puDNG5ZMBzY-14" value="&lt;div&gt;WebSocket&lt;/div&gt;&lt;div&gt;Server&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="500" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
