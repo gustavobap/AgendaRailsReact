@@ -5,6 +5,9 @@
 This slot booking application is designed to demonstrate how to structure and implement the architecture of an agenda system. It uses modern web technologies and a scalable design to handle real-time slot bookings efficiently.
 
 ## Architecture
+
+![AgendaApplication](https://github.com/user-attachments/assets/91fe171f-5d36-4a42-b42c-b7c17bf5b70a)
+
 The application comprises:
 - **Frontend**: A React application presenting time slots in rows and columns, allowing users to book and view availability.
 - **Backend**: A Ruby on Rails application handling booking logic, overlap checks, real-time updates, and database interactions.
@@ -45,6 +48,9 @@ You can remove docker images and containers running following script
 1. Select a date and time slot length (must be a multiple of 15 minutes).
 2. Click on a time slot to send a booking request to the backend. The backend checks for overlaps and registers the slot if available.
 3. If another user books a slot while you're viewing, you'll see real-time updates on the schedule screen.
+
+![Screenshot from 2024-11-30 08-14-41_small](https://github.com/user-attachments/assets/2e0e88ea-e9a6-480f-b147-d1b62f805ed7)
+
 
 ## Concurrency Management
 - Database locks and transactions are used to prevent overlapping bookings, even under parallel user execution.
