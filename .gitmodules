@@ -1,0 +1,3 @@
+[submodule "frontend/home/agenda"]
+	path = frontend/home/agenda
+	url = git@github-mine:gustavobap/AgendaReact.git
