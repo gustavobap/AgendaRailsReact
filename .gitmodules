@@ -1,6 +1,8 @@
 [submodule "frontend/home/agenda"]
 	path = frontend/home/agenda
 	url = git@github-mine:gustavobap/AgendaReact.git
+	branch = main
 [submodule "backend/home/agenda"]
 	path = backend/home/agenda
 	url = git@github-mine:gustavobap/AgendaRails.git
+	branch = main
