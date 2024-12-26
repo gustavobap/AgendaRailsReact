@@ -61,4 +61,4 @@ RUN gem install bundler
 RUN bundle install
 RUN EDITOR="nano" bundle exec rails credentials:edit
 
-ENTRYPOINT RAILS_ENV=production bundle exec rake db:create db:migrate db:seed && rails server -b 0.0.0.0 -e production
+ENTRYPOINT RAILS_ENV=production bundle exec rake db:prepare && rails server -b 0.0.0.0 -e production
